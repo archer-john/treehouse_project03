@@ -1,7 +1,8 @@
-import csv
 import datetime
 import os
 import sys
+
+from utils import initialize_csv
 
 
 def clear():
@@ -60,5 +61,7 @@ MENU = {
 
 if __name__ == '__main__':
 
+    # Inititalize csv
+    initialize_csv()
     # Main menu
     main_menu()
