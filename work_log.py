@@ -2,12 +2,7 @@ import datetime
 import os
 import sys
 
-from utils import initialize_csv
-
-
-def clear():
-    """Clear the screen"""
-    os.system('cls' if os.name == 'nt' else 'clear')
+from utils import initialize_csv, read_csv, write_csv, append_csv, clear
 
 
 def main_menu(error=None):
@@ -61,7 +56,7 @@ MENU = {
 
 if __name__ == '__main__':
 
-    # Inititalize csv
+    # Initialize csv
     initialize_csv()
     # Main menu
     main_menu()
