@@ -1,5 +1,6 @@
 import csv
 import os
+import sys
 
 # get absolute path for 'work_log.csv'
 filename = os.path.join(
@@ -61,10 +62,24 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def menu_header():
-    welcome_message = '-  Your Electronic Timesheet  -'
-    border = '-' * len(welcome_message)
-    print(border)
-    print(welcome_message)
-    print('-' + ' ' * 9, 'Main Menu', ' ' * 9 + '-')
-    print(border)
+def exit_program():
+    """Exit work log"""
+    # add any clean up that needs to happen here
+    sys.exit()
+
+
+def work_log_by_date():
+    """
+    Gets data from 'work_log.csv' iterates through the List of dicts creating a
+    new dict with the dates as the key and list of tasks completed on that date
+    as the value
+    :return: dict
+    """
+    data = read_csv()
+    log = dict()
+    for task in data:
+        if task['date'] in log:
+            log[task['date']].append(task)
+        else:
+            log[task['date']] = [task]
+    return log
