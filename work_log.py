@@ -2,6 +2,8 @@ import datetime
 import os
 import sys
 
+from add_task import add_task
+from search_task import search_task
 from utils import initialize_csv, read_csv, write_csv, append_csv, clear
 
 
@@ -29,16 +31,6 @@ def main_menu(error=None):
         main_menu(error='Incorrect input.')
 
     return None
-
-
-def add_task():
-    """Add new task"""
-    pass
-
-
-def search_task():
-    """Search for a task"""
-    pass
 
 
 def exit_program():
