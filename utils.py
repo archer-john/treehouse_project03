@@ -38,7 +38,7 @@ def write_csv(data):
     :param data: List of OrderDicts
     :return: None
     """
-    with open(filename, 'w', encoding='utf8') as outfile:
+    with open(filename, 'w', encoding='utf8', newline='') as outfile:
         writer = csv.DictWriter(outfile, fieldnames=HEADER)
         writer.writerows(data)
     return None
@@ -50,7 +50,7 @@ def append_csv(task):
     :param task: Dict
     :return: None
     """
-    with open(filename, 'a', encoding='utf8') as outfile:
+    with open(filename, 'a', encoding='utf8', newline='') as outfile:
         writer = csv.DictWriter(outfile, fieldnames=HEADER)
         writer.writerow(task)
     return None
@@ -59,3 +59,12 @@ def append_csv(task):
 def clear():
     """Clear the screen"""
     os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def menu_header():
+    welcome_message = '-  Your Electronic Timesheet  -'
+    border = '-' * len(welcome_message)
+    print(border)
+    print(welcome_message)
+    print('-' + ' ' * 9, 'Main Menu', ' ' * 9 + '-')
+    print(border)

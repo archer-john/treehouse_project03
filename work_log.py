@@ -4,17 +4,13 @@ import sys
 
 from add_task import add_task
 from search_task import search_task
-from utils import initialize_csv, read_csv, write_csv, append_csv, clear
+from utils import initialize_csv, clear, menu_header
 
 
 def main_menu(error=None):
     """Work log main menu"""
     clear()
-    welcome_message = '-  Your Electronic Timesheet  -'
-    border = '-' * len(welcome_message)
-    print(border)
-    print(welcome_message)
-    print(border)
+    menu_header()
 
     # If error print error else blank line
     error = f'\n[!] {error} Please select again \n' if error else ''
@@ -26,9 +22,9 @@ def main_menu(error=None):
     user_input = input('>')
 
     if user_input in MENU:
-        MENU[user_input]
+        MENU[user_input]()
     else:
-        main_menu(error='Incorrect input.')
+        main_menu(error=f'Incorrect input (last input: {user_input}).')
 
     return None
 
@@ -50,5 +46,7 @@ if __name__ == '__main__':
 
     # Initialize csv
     initialize_csv()
-    # Main menu
-    main_menu()
+
+    # Main menu infinite loop
+    while True:
+        main_menu()
